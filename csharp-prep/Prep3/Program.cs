@@ -11,6 +11,7 @@ class Program
         int number = randomGenerator.Next(1,100);
 
         int guess = 0;
+        int guessCount = 0;
 
         while (guess != number)
         {
@@ -25,7 +26,10 @@ class Program
             {
                 Console.WriteLine("Lower");
             }
+
+            guessCount ++ ; 
         }
         Console.WriteLine("You win!");
+        Console.WriteLine($"You got it in {guessCount} guesses.");
     }
 }
