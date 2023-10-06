@@ -11,6 +11,12 @@ public class Assignment
         _topic = topic;
     }
     
+    public string GetSummary()
+    {
+        string summary = $"{_studentName} - {_topic}";
+        return summary;
+    }
+
     public string GetStudentName()
     {
         return _studentName;
@@ -19,11 +25,5 @@ public class Assignment
     public string GetTopic()
     {
         return _topic;
-    }
-
-    public string GetSummary()
-    {
-        string summary = $"{_studentName} - {_topic}";
-        return summary;
     }
 }
