@@ -90,15 +90,19 @@ namespace Develop04
                     Listing listing1 = new Listing("Listing", "This activity will help you to list out things and focus on the positives in your life.", listingPrompts, items);
                     listing1.StartMessage();
                     //select random prompt to show
+                    listing1.DisplayRandomPrompt();
                     //countdown of several seconds to think about prompt
+                    listing1.Countdown();
                     //list items until duration is over
+                    listing1.ListItems();
                     //display items
+                    listing1.DisplayItemCount();
+                    listing1.DisplayItems();
                     //end message
                     listing1.EndMessage();
                 }
                 else
                 {
-                    //Weird Thing Entered
                     Console.WriteLine(" ");
                 }
             }

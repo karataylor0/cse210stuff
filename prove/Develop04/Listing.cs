@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Threading;
 
 namespace Develop04
@@ -15,24 +16,33 @@ namespace Develop04
             _items = items;
         }
         
+
+        
+        //list items until duration is over
+        public void ListItems()
+        {
+            int totalTime = (base.GetTotalTime() - 5) * 1000;
+            DateTime startTime = DateTime.Now;
+            DateTime futureTime = startTime.AddSeconds(totalTime);
+
+            while (DateTime.Now < futureTime)
+            {
+                string item = Console.ReadLine();
+                _items.Add(item);
+            }
+        }
+
+        //select random prompt to show
         public void DisplayRandomPrompt()
         {
-            _listingPrompts.Add("Who are people that you appreciate?");
-            _listingPrompts.Add("What are personal strengths of yours?");
-            _listingPrompts.Add("Who are people that you have helped this week?");
-            _listingPrompts.Add("When have you felt the Holy Ghost this month?");
-            _listingPrompts.Add("Who are some of your personal heros?");
-            _listingPrompts.Add("What are you grateful for today?");
-            _listingPrompts.Add("What are the biggest blessings in your life?");
-            
             Random randomGenerator = new Random();
             int index = randomGenerator.Next(_listingPrompts.Count);
             Console.WriteLine(_listingPrompts[index]);
         }
 
+        //countdown of several seconds to think about prompt
         public void Countdown()
         {
-            int totalTime = base.GetTotalTime();
             Console.Write("5");
             Thread.Sleep(1000);
             Console.Write("\b \b");
@@ -50,16 +60,19 @@ namespace Develop04
             Console.Write("\b \b");
         }
 
+        //display item count
+        public void DisplayItemCount()
+        {
+            Console.WriteLine($"You wrote {_items.Count} items.");
+        }
+
+        //display items
         public void DisplayItems()
         {
-            Console.WriteLine($"You wrote {_items} items.");
+            foreach (string item in _items)
+            {
+                Console.Write($"{item}. ");
+            }
         }
-        //public int CountItems(int timeOrSomething)
-        //{    
-        //    while ( > 0)
-        //    {
-        //        AHHHHHHHHHHHHHHHHHHHHHHHHHHHH
-        //    }
-        //}
     }
 }
