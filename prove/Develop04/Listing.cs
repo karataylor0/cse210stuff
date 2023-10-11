@@ -21,9 +21,8 @@ namespace Develop04
         //list items until duration is over
         public void ListItems()
         {
-            int totalTime = (base.GetTotalTime() - 5) * 1000;
             DateTime startTime = DateTime.Now;
-            DateTime futureTime = startTime.AddSeconds(totalTime);
+            DateTime futureTime = startTime.AddSeconds(base.GetTotalTime());
 
             while (DateTime.Now < futureTime)
             {
