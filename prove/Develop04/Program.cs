@@ -8,7 +8,6 @@ namespace Develop04
     {
         static void Main(string[] args)
         {
-            //lists
             List<string> reflectionPrompts = new List<string>();
             reflectionPrompts.Add("Think of a time when you stood up for someone else.");
             reflectionPrompts.Add("Think of a time when you helped someone in need.");
@@ -42,7 +41,7 @@ namespace Develop04
             List<string> items = new List<string>();
             
 
-            //mindfulness program
+
             Console.WriteLine("\nWelcome to the Mindfulness Program!");
 
             string choice = "0";
@@ -59,46 +58,31 @@ namespace Develop04
 
                 if (choice == "1")
                 {
-                    //Breathing Activity
-
-
                     Breathing breathing1= new Breathing("Breathing Activity", "This activity will help you to breath in and out slowly to help you be calm and relaxed.");
                     breathing1.StartMessage();
+                    breathing1.PauseAnimation(5);
                     breathing1.BreathInBreathOut();
                     breathing1.EndMessage();
                 }
                 else if (choice == "2")
                 {
-                    //Reflection Activity
-
-
                     Reflection reflection1 = new Reflection("Reflection", "The reflection will help you to think over times in your life where you showed strength and resilience. You will be given a prompt to think over and questions to ask about the prompt.", reflectionPrompts, reflectionQuestions);
-
-                    //start message, duration
                     reflection1.StartMessage();
-
-                    //select random prompt to show user
+                    reflection1.PauseAnimation(5);
                     reflection1.DisplayRandomPrompt();
-                    //display questions with pauses
                     reflection1.DisplayRandomQuestions();
-                    //end message
                     reflection1.EndMessage();
                 }
                 else if (choice == "3")
                 {
-                    //Listing Activity
                     Listing listing1 = new Listing("Listing", "This activity will help you to list out things and focus on the positives in your life.", listingPrompts, items);
                     listing1.StartMessage();
-                    //select random prompt to show
+                    listing1.PauseAnimation(5);
                     listing1.DisplayRandomPrompt();
-                    //countdown of several seconds to think about prompt
                     listing1.Countdown();
-                    //list items until duration is over
                     listing1.ListItems();
-                    //display items
                     listing1.DisplayItemCount();
                     listing1.DisplayItems();
-                    //end message
                     listing1.EndMessage();
                 }
                 else

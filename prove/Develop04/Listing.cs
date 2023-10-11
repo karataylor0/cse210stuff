@@ -42,6 +42,7 @@ namespace Develop04
         //countdown of several seconds to think about prompt
         public void Countdown()
         {
+            Console.WriteLine("");
             Console.Write("5");
             Thread.Sleep(1000);
             Console.Write("\b \b");
