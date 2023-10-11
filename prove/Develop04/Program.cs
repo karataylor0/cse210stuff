@@ -33,16 +33,29 @@ namespace Develop04
                 else if (choice == "2")
                 {
                     //Reflection Activity
-                    Reflection reflection1 = new Reflection("Reflection", "Reflect on stuff my dude. It's calming.");
+                    Reflection reflection1 = new Reflection("Reflection", "The reflection will help you to think over times in your life where you showed strength and resilience. You will be given a prompt to think over and questions to ask about the prompt.");
+                    reflection1.AddReflectionPrompts();
+                    reflection1.AddReflectionQuestions();
+
+                    //start message, duration
                     reflection1.StartMessage();
-                    reflection1.PauseAnimation();
-                    while (reflection1.GetTotalTime() > 0)
+
+                    //select random prompt to show user
+                    reflection1.DisplayRandomPrompt();
+
+                    DateTime startTime = DateTime.Now;
+                    DateTime futureTime = startTime.AddSeconds(reflection1.GetTotalTime());
+
+                    DateTime currentTime = DateTime.Now;
+
+                    //reflect on questions pulled from list
+                    while (currentTime < futureTime)
                     {
-                        reflection1.DisplayRandomPrompt();
+                        reflection1.DisplayRandomQuestion();
+                        //pause for several seconds
+                        reflection1.PauseAnimation(5000);
                     }
-                    reflection1.WaitingTime();
-
-
+                    //end message
                     reflection1.EndMessage();
                 }
                 else if (choice == "3")
@@ -50,7 +63,11 @@ namespace Develop04
                     //Listing Activity
                     Listing listing1 = new Listing("Listing", "This activity will help you to list out things and focus on the positives in your life.");
                     listing1.StartMessage();
-                    //actual activity stuff
+                    //select random prompt to show
+                    //countdown of several seconds to think about prompt
+                    //list items until duration is over
+                    //display items
+                    //end message
                     listing1.EndMessage();
                 }
                 else

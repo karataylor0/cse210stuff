@@ -7,7 +7,7 @@ namespace Develop04
     public class Breathing : Activity
     {
         
-        public Breathing(string activityName, string description) : base(string activityName, string description)
+        public Breathing(string activityName, string description) : base(activityName, description)
     {
         
     }

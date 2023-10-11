@@ -30,7 +30,7 @@ namespace Develop04
             Console.WriteLine(_listingPrompts[index]);
         }
 
-        public void Countdown() : base()
+        public void Countdown()
         {
             int totalTime = base.GetTotalTime();
             Console.Write("5");
@@ -54,13 +54,12 @@ namespace Develop04
         {
             Console.WriteLine($"You wrote {_items} items.");
         }
-        public int CountItems(int timeOrSomething)
-        {
-            
-            while ( > 0)
-            {
-                AHHHHHHHHHHHHHHHHHHHHHHHHHHHH
-            }
-        }
+        //public int CountItems(int timeOrSomething)
+        //{    
+        //    while ( > 0)
+        //    {
+        //        AHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+        //    }
+        //}
     }
 }

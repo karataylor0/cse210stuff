@@ -10,11 +10,10 @@ namespace Develop04
         private string _description;
         private int _totalTime;
 
-        public Activity(string activityName, string description, int totalTime)
+        public Activity(string activityName, string description)
         {
             _activityName = activityName;
             _description = description;
-            _totalTime = totalTime;
         }
         
         public void StartMessage()
@@ -43,13 +42,10 @@ namespace Develop04
             Thread.Sleep(2000);
         }
 
-        public void PauseAnimation()
+        public void PauseAnimation(int time)
         {
             //some kind of animation (spinner, countdown timer, periods)
-            
-            int pausing = 3000;
-
-            while (pausing != 0)
+            while (time != 0)
             {
                 Console.Write("|");
                 Thread.Sleep(250);
@@ -63,7 +59,7 @@ namespace Develop04
                 Console.Write("\\");
                 Thread.Sleep(250);
 
-                pausing = pausing - 1000;
+                time = time - 1000;
             }
         }
 
