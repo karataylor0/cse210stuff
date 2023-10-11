@@ -19,11 +19,11 @@ namespace Develop04
         public void StartMessage()
         {
             //message with name of activity, description
-            Console.WriteLine($"Welcome to {_activityName}! {_description}.");
+            Console.WriteLine($"Welcome to {_activityName}! {_description}");
 
             // ask for and set the duration
             Console.WriteLine("What time would you want (in seconds)?");
-            int _totalTime = int.Parse(Console.ReadLine());
+            _totalTime = int.Parse(Console.ReadLine());
             
 
             //pause for several seconds
@@ -37,7 +37,7 @@ namespace Develop04
             //pause
             Thread.Sleep(3000);
             //activity completed, length of time
-            Console.WriteLine($"You've completed {_activityName}! It took {_totalTime}");
+            Console.WriteLine($"You've completed {_activityName}! It took {_totalTime} seconds.");
             //pause
             Thread.Sleep(2000);
         }
@@ -53,11 +53,12 @@ namespace Develop04
                 Console.Write("/");
                 Thread.Sleep(250);
                 Console.Write("\b \b");
-                Console.Write("--");
+                Console.Write("-");
                 Thread.Sleep(250);
                 Console.Write("\b \b");
                 Console.Write("\\");
                 Thread.Sleep(250);
+                Console.Write("\b \b");
 
                 time = time - 1000;
             }

@@ -6,13 +6,13 @@ namespace Develop04
 {
     public class Listing : Activity
     {
-        private int _items;
         private List<string> _listingPrompts;
-        private List<string> _reponses;
+        private List<string> _items;
 
-        public Listing(string activityName, string description) : base(activityName, description)
+        public Listing(string activityName, string description, List<string> listingPrompts, List<string> items) : base(activityName, description)
         {
-            
+            _listingPrompts = listingPrompts;
+            _items = items;
         }
         
         public void DisplayRandomPrompt()

@@ -13,18 +13,17 @@ namespace Develop04
     }
         public void BreathInBreathOut()
         {
-            int totalTime = base.GetTotalTime() * 1000;
+            int totalTime = base.GetTotalTime();
+            DateTime startTime = DateTime.Now;
+            DateTime futureTime = startTime.AddSeconds(totalTime);
 
-            while (totalTime != 0)
+            //reflect on questions pulled from list
+            while (DateTime.Now < futureTime)
             {
                 Console.WriteLine("Breath in.");
-                Thread.Sleep(totalTime/4);
+                Thread.Sleep(3000);
                 Console.WriteLine("Breath out.");
-                Thread.Sleep(totalTime/4);
-                Console.WriteLine("Breath in.");
-                Thread.Sleep(totalTime/4);
-                Console.WriteLine("Breath out.");
-                Thread.Sleep(totalTime/4);
+                Thread.Sleep(5000);
             }
         }
     }
