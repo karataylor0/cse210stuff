@@ -1,8 +1,26 @@
 class Reference
 {
+    private string _reference;
+    private string _book;
+    private int _chapter;
+    private int _verse;
+    private int _endVerse;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     private List<string> _scriptureReferences;
 
-    public Reference()
+    public Reference(string )
     {
 
     }
@@ -16,4 +34,5 @@ class Reference
     {
         return _scriptureReferences;
     }
+
 }
