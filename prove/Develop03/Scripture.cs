@@ -1,13 +1,10 @@
 using System;
 using System.Security.Cryptography;
 
-//keeps track of both the reference and the text of the scripture; 
-//can hide words and get the rendered display of the text
 namespace Develop3 
 {
     class Scripture
     {
-        private int _randomWord;
         private Reference _reference;
         private string _scripture;
         private List<Word> _words;
@@ -29,23 +26,15 @@ namespace Develop3
             }
         }
         
-        public void HideRandomWords()
+        public void HideRandomWord()
         {
             Random randomGenerator = new Random();
             int index = randomGenerator.Next(_words.Count);
-            _words[index].Hide();
-        }
-
-        public void HideWord(string wordToHide)
-        {
-            foreach (Word word in _words)
-            {
-                if (word.GetText() == wordToHide && !word.IsHidden())
-                {
-                    word.Hide();
-                    break;
-                }
+            while (_words[index].IsHidden() == true)
+            { 
+                index = randomGenerator.Next(_words.Count);
             }
+            _words[index].Hide();
         }
         
         public string GetDisplayText()
@@ -53,7 +42,7 @@ namespace Develop3
             string displayText = _scripture;
             foreach (Word word in _words)
             {
-                displayText = displayText.Replace(word.GetText(), word.GetText());
+                displayText = displayText.Replace(word.GetWordText(), word.GetDisplayText());
             }
             return displayText + $"\n{_reference.GetDisplayText()}";
         }

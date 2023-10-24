@@ -20,19 +20,21 @@ namespace Develop3
 
         public void Show()
         {
-            //Show word code.
+            Console.Write(_text);
         }
 
         public bool IsHidden()
         {
-            //return true if hidden, false if shown
             return _isHidden;
         }
 
-        public string GetText()
+        public string GetDisplayText()
         {
-            //return display text, underscores if hidden, word if not
             return _isHidden ? new string('_', _text.Length) : _text;
+        }
+        public string GetWordText()
+        {
+            return _text;
         }
     }
 }
