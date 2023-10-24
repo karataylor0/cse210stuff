@@ -5,13 +5,10 @@ namespace Develop3
     //keeps track of the book, chapter, and verse information
     class Reference
     {
-        private string _reference;
         private string _book;
         private int _chapter;
         private int _verse;
         private int _endVerse;
-        
-        private List<string> _scriptureReferences;
 
         public Reference(string book, int chapter, int verse)
         {
@@ -30,7 +27,14 @@ namespace Develop3
 
         public string GetDisplayText()
         {
-            return $"{_book} {_chapter}: {_verse}-{_endVerse}";
+            if (_endVerse != 0)
+            {
+                return $"{_book} {_chapter}:{_verse}-{_endVerse}";
+            }
+            else
+            {
+                return $"{_book} {_chapter}:{_verse}";
+            }
         }
 
         public string GetBook()

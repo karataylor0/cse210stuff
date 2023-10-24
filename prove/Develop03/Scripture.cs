@@ -13,10 +13,10 @@ namespace Develop3
         {
             _scripture = scripture;
             _reference = reference;
-            InitializeWords();
+            CreateWordsList();
         }
 
-        private void InitializeWords()
+        private void CreateWordsList()
         {
             string[] scriptureWords = _scripture.Split(' ');
             _words = new List<Word>();
