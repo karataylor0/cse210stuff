@@ -1,91 +1,73 @@
-class Scripture
+using System;
+using System.Security.Cryptography;
+
+//keeps track of both the reference and the text of the scripture; 
+//can hide words and get the rendered display of the text
+namespace Develop3 
 {
-    private int _randomWord;
-    private string _reference;
-    private string _scriptures;
-    private List<string> _scriptureList;
-    
-    public void HideRandomWords()
+    class Scripture
     {
-
-    }
-    
-    public string GetDisplayText()
-    {
-
-    }
-    
-    public bool IsCompletelyHidden()
-    {
-
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    private List<string> _scriptureTexts;
-
-    public List<string> GetScriptureTexts()
-    {
-        return _scriptureTexts;
-    }
-
-
-
-    public void AddOriginalScriptures()
-    {
-        using (StreamWriter outputFile = new StreamWriter("ScriptureStorage.xlsx"))
+        private int _randomWord;
+        private Reference _reference;
+        private string _scripture;
+        private List<Word> _words;
+        
+        public Scripture(string scripture, Reference reference)
         {
-            outputFile.WriteLine("Moses||1||39||For behold, this is my work and my glory—to bring to pass the immortality and eternal life of man.");
-            outputFile.WriteLine("Moses||7||18||And the Lord called his people Zion, because they were of one heart and one mind, and dwelt in righteousness; and there was no poor among them.");
-            outputFile.WriteLine("Abraham||3||22-23||Now the Lord had shown unto me, Abraham, the intelligences that were organized before the world was; and among all these there were many of the noble and great ones;||And God saw these souls that they were good, and he stood in the midst of them, and he said: These I will make my rulers; for he stood among those that were spirits, and he saw that they were good; and he said unto me: Abraham, thou art one of them; thou wast chosen before thou wast born.");
-            outputFile.WriteLine("Genesis||1||26-27||And God said, Let us make man in our image, after our likeness: and let them have dominion over the fish of the sea, and over the fowl of the air, and over the cattle, and over all the earth, and over every creeping thing that creepeth upon the earth.||So God created man in his own image, in the image of God created he him; male and female created he them.");
-            outputFile.WriteLine("Genesis||2||24||Therefore shall a man leave his father and his mother, and shall cleave unto his wife: and they shall be one flesh.");
-            outputFile.WriteLine("Genesis||39||9||There is none greater in this house than I; neither hath he kept back any thing from me but thee, because thou art his wife: how then can I do this great wickedness, and sin against God?");
-            outputFile.WriteLine("Exodus||19||5-6||Now therefore, if ye will obey my voice indeed, and keep my covenant, then ye shall be a peculiar treasure unto me above all people: for all the earth is mine:||And ye shall be unto me a kingdom of priests, and an holy nation. These are the words which thou shalt speak unto the children of Israel.");
-            outputFile.WriteLine("Joshua||24||15||And if it seem evil unto you to serve the Lord, choose you this day whom ye will serve; whether the gods which your fathers served that were on the other side of the flood, or the gods of the Amorites, in whose land ye dwell: but as for me and my house, we will serve the Lord.");
+            _scripture = scripture;
+            _reference = reference;
+            InitializeWords();
         }
-    }
 
-    public void LoadScripturesFromFile(string filename)
-    {
-        string[] lines = System.IO.File.ReadAllLines(filename);
-        foreach (string line in lines)
+        private void InitializeWords()
         {
-            string[] parts = line.Split("||");
-            book = parts[0];
-            chapter = parts[1];
-            verses = parts[2];
-            _scriptureTexts = parts[3];
-
-        }
-    }
-    /*public void SaveToFile(string filename)
-    {
-        using (StreamWriter outputFile = new StreamWriter(filename))
-        {
-            foreach (Entry entry in _entries)
+            string[] scriptureWords = _scripture.Split(' ');
+            _words = new List<Word>();
+            foreach (string word in scriptureWords)
             {
-                outputFile.WriteLine($"{entry._date}~|~{entry._promptText}~|~{entry._entryText}");
+                _words.Add(new Word(word));
             }
         }
-    }*/
-
-    /*public void LoadFromFile(string filename)
-    {
-        string[] lines = System.IO.File.ReadAllLines(filename);
-        foreach (string line in lines)
+        
+        public void HideRandomWords()
         {
-            string[] parts = line.Split("~|~");
-            Entry newEntry = new Entry();
-            newEntry._date = parts[0];
-            newEntry._promptText = parts[1];
-            newEntry._entryText = parts[2];
-            AddEntry(newEntry);
+            Random randomGenerator = new Random();
+            int index = randomGenerator.Next(_words.Count);
+            _words[index].Hide();
         }
-    }*/
+
+        public void HideWord(string wordToHide)
+        {
+            foreach (Word word in _words)
+            {
+                if (word.GetText() == wordToHide && !word.IsHidden())
+                {
+                    word.Hide();
+                    break;
+                }
+            }
+        }
+        
+        public string GetDisplayText()
+        {
+            string displayText = _scripture;
+            foreach (Word word in _words)
+            {
+                displayText = displayText.Replace(word.GetText(), word.GetText());
+            }
+            return displayText + $"\n{_reference.GetDisplayText()}";
+        }
+        
+        public bool IsCompletelyHidden()
+        {
+            foreach (Word word in _words)
+            {
+                if (word.IsHidden() == false)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
 }
