@@ -10,18 +10,21 @@ public class EternalGoal : Goal
     {
         throw new NotImplementedException();
         //record event for eternal goal
+        
     }
     public override string GetStringRepresentation()
     {
-        throw new NotImplementedException();
         //return string representation of goal
+        return $"{_name}: {_description}";
     }
     public override string GetDetailsString()
     {
-        throw new NotImplementedException();
+        //return string representation of details
+        return $"";
     }
     public override bool IsComeplete()
     {
+        //return true if completed, false if not
         throw new NotImplementedException();
     }
 }

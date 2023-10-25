@@ -15,13 +15,13 @@ public abstract class Goal
     public abstract void RecordEvent();
     public abstract bool IsComeplete();
     public abstract string GetDetailsString();
-    /*{
+    {
         return $"{_shortName}: {_description}. {_points}";
-    }*/
+    }
     public abstract string GetStringRepresentation();
-    /*{
+    {
         return $"{_shortName}";
-    }*/
+    }
 
     //i would like to take a nap now please
     //sleepy time for kara!

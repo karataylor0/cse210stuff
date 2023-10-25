@@ -14,7 +14,7 @@ public class ChecklistGoal : Goal
     }
     public override void RecordEvent() : base(_name, _description)
     {
-        Console.WriteLine($"{_name}: {_description} \n{_target} : {_bonus}");
+        Console.WriteLine($"{_name}}: {_description} \n{_target} : {_bonus}");
     }
     public override bool IsComeplete()
     {
@@ -29,10 +29,10 @@ public class ChecklistGoal : Goal
     }
     public override string GetDetailsString()
     {
-        throw new NotImplementedException();
+        return $"{_amountCompleted}: {_target}: {_bonus}";
     }
     public override string GetStringRepresentation()
     {
-        throw new NotImplementedException();
+        return $"{}";
     }
 }

@@ -1,13 +1,15 @@
 using System;
+using System.Runtime.CompilerServices;
 
 public class GoalManager
 {
     private List<Goal> _goals;
     private int _score;
 
-    public GoalManager()
+    public GoalManager(List<Goal> goals, int score)
     {
-
+        _goals = goals;
+        _score = score;
     }
     public void Start()
     {
@@ -31,16 +33,14 @@ public class GoalManager
             Console.WriteLine($"{goal.GetDetailsString()}");
         }
     }
-    public void CreateGoal()
+    public string CreateGoal()
     {
-        //Console.WriteLine("What is the name of the goal?");
-        //string name = Console.ReadLine();
-        //string description = ""; // add desrciption of type of goal
-        //string points = ""; //should start as zero? or is it adding to the previous points?
-        
-        //Goal goal1 = new Goal(name, description, points);
+        Console.WriteLine("What is the name of the goal?");
+        string name = Console.ReadLine();
+        Console.WriteLine("What type of goal would you like to create?\n1. Checklist Goal\n2. Eternal Goal\n3. Simple Goal");
+        string goalType = Console.ReadLine();
 
-        //_goals.Add(goal1);
+        return name + "~|~" + goalType;
     }
     public void RecordGoal()
     {
