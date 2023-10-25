@@ -26,5 +26,11 @@ class Program
         Console.Write("\n");
         reception1.FullDetails();
 
+        Address address4 = new Address("123 Road Street", "New York City", "New York", "USA", 12345);
+        BirthdayParty birthdayParty1 = new BirthdayParty(15, "cake and ice cream", "Anna's 5th Birthday", "Join us for celebrating Anna's birthday!", "July 5th", "10am -12", address4.StringAddress());
+        Console.Write("\n");
+        birthdayParty1.StandardDetails();
+        Console.Write("\n");
+        birthdayParty1.FullDetails();
     }
 }
