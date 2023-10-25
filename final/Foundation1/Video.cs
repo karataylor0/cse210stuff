@@ -5,7 +5,7 @@ public class Video
 {
     string _title;
     string _author;
-    string _length;
+    int _length;
     private List<Comment> _commentList = new List<Comment>();
 
     public void AddComment(Comment comment)
@@ -34,7 +34,7 @@ public class Video
     public void SetLength()
     {
         Console.WriteLine("What is the video's length (in seconds)?");
-        _length = Console.ReadLine();
+        _length = int.Parse(Console.ReadLine());
     }
     public string GetTitle()
     {
@@ -44,7 +44,7 @@ public class Video
     {
         return _author;
     }
-    public string GetLength()
+    public int GetLength()
     {
         return _length;
     }

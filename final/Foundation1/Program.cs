@@ -99,9 +99,10 @@ class Program
         comment12.SetText();
         video4.AddComment(comment12);
 
+        Console.Write("\n\n");
         foreach (Video video in videoList)
         {
-            Console.WriteLine($"{video.GetTitle()} by {video.GetAuthor}: {video.GetLength()} seconds");
+            Console.WriteLine($"{video.GetTitle()} by {video.GetAuthor()}: {video.GetLength()} seconds");
             Console.WriteLine($"Comments:{video.CommentsAmount()}");
             foreach(Comment comment in video.GetCommentList())
             {
